@@ -72,7 +72,7 @@
         display: block;
     }
     .img-tempo{
-        margin-top: 10%;
+        
         position: relative;
         left: 25.33%;
         right: 25.6%;
@@ -167,7 +167,6 @@
     }
 
     .card{
-
         height: 147px;
         width: 69px;
         margin-left: 15px;
@@ -177,6 +176,23 @@
         
         border-radius: 10px;
     }
+    .section-cards{
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    
+    .section-cards {
+        overflow: hidden;
+        margin-left: .8rem;
+        margin-right: .8rem;
+        border-radius: .5rem;
+        transition: box-shadow .3s, transform .3s;
+    }
+    
+    .section-cards:hover {
+        transform: translateY(-10px);
+    }
+
     .hour{
         color:#FFFFFF;
     }
