@@ -8,9 +8,93 @@
 :root{
     --white : #FFFFFF;
     --blue-claro: #9DBCF3;
+    --primary: #255ff4;
+    --dur: 1s;
+    --input: #ffffff;
 }
 
 @media only screen and (max-width: 500px) {
+
+    .search-box{
+        width: fit-content;
+        height: fit-content;
+        position: relative;
+        margin-left: 43px;
+        top: -3px;
+    }
+    
+    
+    .btn-search{
+        width: 50px;
+        height: 50px;
+        border-style: none;
+        font-size: 20px;
+        font-weight: bold;
+        outline: none;
+        cursor: pointer;
+        border-radius: 50%;
+        position: absolute;
+        right: 0px;
+        color:#ffffff ;
+        background-color:transparent;
+        pointer-events: painted;  
+    }
+
+    
+    input[type="text"] {
+        height: 43px;
+        font-size: 14px;
+        display: inline-block;
+        font-family: "Poppins";
+        font-weight: 100;
+        border: none;
+        outline: none;
+        color: #555;
+        
+        padding: 3px;
+        padding-left: 10px;
+        padding-right: 50px;
+        width: 0px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: none;
+        z-index: 3;
+        transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+        cursor: pointer;
+    }
+    
+    input[type="text"]:focus:hover {
+        margin-top: 3px;
+        margin-right: 35px;
+        border-radius: 10px 0px 0px 10px;
+        background: var(--white);
+        
+    }
+    
+    input[type="text"]:focus {
+        
+        width: 200px;
+        z-index: 1;
+        border-bottom: none;
+        cursor: text;
+    }
+    button[type="submit"] {
+        display: inline-block;
+        border: none;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        cursor: pointer;
+
+        cursor: pointer;
+        transition: opacity .4s ease;
+    }
+    
+    button[type="submit"]:hover {
+        opacity: 0.8;
+    }
+
 
     /* HEADER ========================*/
 
@@ -19,11 +103,11 @@
         justify-content: space-between;
     }
     .btn-header {
-        margin-top: 29px;
+        margin-top: 20px;
         margin-left: 16px;
         margin-right: 16px;
         min-width: 49px;
-        min-height: 49px;
+        height: 49px;
         background-color: var(--white);
         border-radius: 10px;
         cursor: pointer;
@@ -33,9 +117,15 @@
         margin-left: 11px;
         background-color: var(--white);
     }
+    #form{
+        border-radius: 10px;
+        background-color: var(--white);
+    }
 
     /*TITLE LOCALIDADE ===================*/
-
+    .local{
+        margin-top: 30px;
+    }
     .title-local{
         margin-top: -6%;
         left: 27.47%;
@@ -52,10 +142,8 @@
 
     .desc-local{
         position: relative;
-        left: 26.4%;
-        right: 26.4%;
+        text-align: center;
         top: 18%;
-    
 
         font-family: 'Poppins';
         font-style: normal;
@@ -69,13 +157,9 @@
     /*IMAGEM PRINCIPAL/GRAUS=================*/
 
     .img-clima{
-        display: block;
-    }
-    .img-tempo{
-        
-        position: relative;
-        left: 25.33%;
-        right: 25.6%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
     .graus{
@@ -93,7 +177,7 @@
     .info{
         margin: auto;
         display: flex;
-        margin-top: 31px;
+        margin-top: 20px;
         max-width: 91.46%;
         height: 100px;
         background: var(--white);
@@ -127,6 +211,7 @@
     /*HEADER DAYS/HOURS =====================*/
 
     .head{
+        height: 60px;
         display: flex;
         justify-content: space-between;
     }
@@ -163,7 +248,7 @@
     /*CARDS HOURS =====================*/
 
     .section-cards{
-        margin-top: 10px;
+        margin-top: 20px;
     }
 
     .card{
@@ -172,7 +257,7 @@
         margin-left: 15px;
         top: 576px;
         border-radius: 10px;
-
+        margin-bottom: 20px;
         
         border-radius: 10px;
     }
