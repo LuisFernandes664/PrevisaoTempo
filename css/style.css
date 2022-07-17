@@ -37,7 +37,7 @@
         right: 0px;
         color:#ffffff ;
         background-color:transparent;
-        pointer-events: painted;  
+        pointer-events: painted;
     }
 
     
@@ -305,7 +305,17 @@
         font-size: 20px;
         text-align: center;
     }
+    /*
+    .img-clima-card::first-child{
+        background: var(--blue-claro);
+        width: 68px;
+        height: 68px;
+        margin: auto;
+    }
+    */
     .img-clima-card{
+        width: 68px;
+        height: 68px;
         margin: auto;
     }
 }

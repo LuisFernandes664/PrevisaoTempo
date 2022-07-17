@@ -22,12 +22,12 @@
         </div>
         <div class="btn-header">
             <form id="form" class="search-box">
-                <button class="btn-search" type="submit">
+                <button class="btn-search" type="submit" onclick="getCity2123()">
                     <svg class="btn-menu" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M25.3434 22.5148L19.3665 16.5386C20.7256 14.521 21.3962 12.0002 21.0372 9.31415C20.425 4.74536 16.6801 1.02731 12.1063 0.448311C5.30605 -0.412076 -0.412187 5.30553 0.448345 12.1051C1.02756 16.6803 4.74651 20.4278 9.31631 21.037C12.0027 21.3959 14.5242 20.7256 16.5415 19.3664L22.5184 25.3426C23.2983 26.1225 24.5631 26.1225 25.3431 25.3426C26.1223 24.5618 26.1223 23.2936 25.3434 22.5148ZM4.3119 10.747C4.3119 7.22322 7.17901 4.35643 10.7032 4.35643C14.2275 4.35643 17.0946 7.22322 17.0946 10.747C17.0946 14.2709 14.2275 17.1377 10.7032 17.1377C7.17901 17.1377 4.3119 14.2719 4.3119 10.747Z" fill="#808080"/>
                         </svg>
                 </button>
-                <input type="text" class="input-search" id="search" placeholder="Pesquisa Aqui...">
+                <input onclick="getCity()" type="text" class="input-search" id="search" placeholder="Pesquisa Aqui...">
         </form>
             
                 <!--
@@ -38,30 +38,21 @@
     <main class="main">
         <div class="local">
             <p class="title-local">Previsão</p>
-            <p class="desc-local">Barcelos ,Braga, Portugal</p>
+            <p class="desc-local" class="location" id="location">Barcelos ,Braga, Portugal</p>
         </div>
         <div class="img-clima">
-            <svg class="img-tempo" width="184" height="184" viewBox="0 0 184 184" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <rect width="184" height="184" fill="url(#pattern0)"/>
-                <defs>
-                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-                <use xlink:href="#image0_3_27" transform="scale(0.005)"/>
-                </pattern>
-                <image id="image0_3_27" width="200" height="200" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAMZ0lEQVR4nO3dT2yb5R0H8O/vsdumSXASCSP1srhSq7H0MFdqOXCpg4bkGCZcaBEnmlwmQEDT+0QabgOhpiAYl6kplx0Yq9FIml7W5LJrzaEZ2irVOU1rkOzaSduVvu9vhzglSfPHdl77fV6/388FiTr2T22+fp7nff4BRERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERETtRvwugGqXTqcTQDQhoklV7f35T8ysMW5peno671917YkBsVw6nRlWxSsAUiLo3fEHoLMi5tt9+/ZM5nK5UtMLbHMMiIWy2WzvgwcPR1VxtrZQbGkScMdnZmYKnhUXMgyIZYaGXhp1XR3bZTDWUdWJ/fv3jbNFqR8DYomVVuN/VwBJNekjCsbgJMcp9Yn4XQABmUwm+fChc0NEnm3ix/S6Lt44fPjwf2/d+jdDUiMGxGeZTCbpOLjuZZdqKyLoAJA9dOjwAkNSG3axfJROpxOq5kYrwvEkMzgz891s6z83WIzfBYSZqrniTzgAVffKyrwKbYcB8Uk6nTkvgqRfn78STLnk1+cHBccgPlj55pYrftcBSILjke2xBfGFGfO7gjVsqsU6HKTXYWlpKek4TsoY06+qm3aPRCTvuu5CJBKZ7e7ufuKbeaX1MLebX21dRmZmpif9LsJGUb8LsF25XM4CeAVA1nXdXhGBqm75elVNiQhc10W5XC4ByAH4NhaL5Vb+XM6KdV9LegYAA7IJ6/6pbFEul4ex0v3w6klPAcD466+/4eV7esg9yDVbT+IYZINKpZIql8u3AVyCt7/ICQCXPv/8s8SRIwMevq1XTLOWuAQaW5CqYrHYG4lELgAYbsXnzc7O4fLlr7C8vNyKj9uRqk5cu3b13Nr/l06/nALclKr2iCCpKiURfA+gALizYWhxGBA8HnxfEpGWzksUCgv44os/olCw4fdMZ2dmrg6uLrUHcAY7tKCqyImYi+08Ix/6gCwtLSVd170O+DOjvbx8D+PjH9oQkgJgRgC3ka7lZEfH3nPtuJw+1AHxOxyrLApJw1SR379/72C7hSS0ASkWi4lIJHIDPodj1fLyPbz77nvWjEka0Y4hCe1TLGPM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"/>
-                </defs>
-                </svg>
-            
+            <img src="https://openweathermap.org/img/wn/02d@4x.png" alt="Previsão Visual/IMG" id="principal-IMG" class="img-tempo">
         </div>
-        <p class="graus">15ºC</p>
+        <p class="graus" id="graus">15ºC</p>
         <div class="info">
             <div class="humidade grid">
                 <svg class="icon-info" width="31" height="39" viewBox="0 0 31 39" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 24.9198C0 19.0935 9.00937 6.63944 13.2895 1.05751C14.3727 -0.352502 16.6273 -0.352502 17.7105 1.05751C21.9906 6.63944 31 19.0935 31 24.9198C31 32.728 24.0602 39 15.5 39C6.93977 39 0 32.728 0 24.9198ZM8.45455 24.9198C8.45455 24.291 7.82045 23.6463 7.04545 23.6463C6.26693 23.6463 5.63636 24.291 5.63636 24.9198C5.63636 29.9183 10.0486 33.906 15.5 33.906C16.275 33.906 16.9091 33.3329 16.9091 32.6325C16.9091 31.932 16.275 31.359 15.5 31.359C11.6074 31.359 8.45455 28.5095 8.45455 24.9198Z" fill="#9DBCF3"/>
                     </svg>    
 
-                <p id="humidade" class="style-info">10ºC</p>
+                <p id="humidade" class="style-info">10%</p>
             </div>
-            <div class="velocidade-vento grid">
+            <div class="velocidade-vento grid" >
                 <svg class="icon-info" width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2.375 14.25H26.125C30.0541 14.25 33.25 11.0541 33.25 7.125C33.25 3.19586 30.0541 0 26.125 0H23.75C22.4371 0 21.375 1.06207 21.375 2.375C21.375 3.68793 22.4371 4.75 23.75 4.75H26.125C27.4357 4.75 28.5 5.8143 28.5 7.125C28.5 8.4357 27.4357 9.5 26.125 9.5H2.375C1.06207 9.5 0 10.5613 0 11.875C0 13.1887 1.06207 14.25 2.375 14.25ZM11.875 23.75H2.375C1.06207 23.75 0 24.8121 0 26.125C0 27.4379 1.06207 28.5 2.375 28.5H11.875C13.1857 28.5 14.25 29.5643 14.25 30.875C14.25 32.1857 13.1857 33.25 11.875 33.25H9.5C8.18707 33.25 7.125 34.3121 7.125 35.625C7.125 36.9379 8.18707 38 9.5 38H11.875C15.8041 38 19 34.8041 19 30.875C19 26.9459 15.8012 23.75 11.875 23.75ZM30.875 16.625H2.375C1.06207 16.625 0 17.6863 0 19C0 20.3137 1.06207 21.375 2.375 21.375H30.875C32.1857 21.375 33.25 22.4393 33.25 23.75C33.25 25.0607 32.1857 26.125 30.875 26.125H28.5C27.1871 26.125 26.125 27.1871 26.125 28.5C26.125 29.8129 27.1871 30.875 28.5 30.875H30.875C34.8041 30.875 38 27.6791 38 23.75C38 19.8209 34.8012 16.625 30.875 16.625Z" fill="#9DBCF3"/>
                     </svg>
@@ -73,7 +64,7 @@
                     <path d="M7.215 14.8512C7.20525 14.6508 7.2 14.4504 7.2 14.25C7.2 7.68906 12.57 2.375 19.2 2.375C23.6475 2.375 27.525 4.76855 29.6025 8.32734C30.7425 7.50352 32.1225 7.125 33.6 7.125C37.575 7.125 40.8 10.2496 40.8 14.25C40.8 15.1555 40.6275 16.0164 40.32 16.818C44.7 17.6938 48 21.5309 48 26.125C48 31.3723 43.7025 35.625 38.4 35.625H10.8C4.83525 35.625 0 30.8379 0 24.9375C0 20.2766 3.01275 16.3133 7.215 14.8512Z" fill="#9DBCF3"/>
                     </svg>
 
-                <p id="nublado" class="style-info">15%</p>                    
+                <p id="nublado" class="style-info" id="nublado">15%</p>                    
             </div>
             <div class="pressao-atmosferica grid">
                 <svg class="icon-info" width="43" height="38" viewBox="0 0 43 38" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -100,7 +91,7 @@
                     <p class="view-all day">See all</p>
                 </div>
             </div>
-            <div class="section-cards">
+            <div class="section-cards" id="section-cards">
                 <div class="card blue">
                     <div class="all-card blue">
                         <p class="hour p-cards blue">12:00</p>
