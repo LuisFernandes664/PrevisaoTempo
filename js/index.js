@@ -96,18 +96,19 @@ function FiveDayCards( json ){
         console.log(cards)
     }
     
-    for(i=0; i<json.cnt; i++) {
-        let todayHours;
-        let today = new Date().toLocaleDateString('fr-CA', {timeZone: 'UTC'})
+    let newArrayToday;
 
-        if(json.list[i].dt_txt.toLocaleDateString('fr-CA', {timeZone: 'UTC'}) == today){
-            todayHours = json.list[i].dt_txt
-            console.log('Hoje: ')
-            console.log(todayHours)
+    for(i=0; i<json.cnt; i++) {
+        
+        let today = new Date().toLocaleDateString('fr-CA', {timeZone: 'UTC'})
+        let aux = json.list[i].dt_txt
+        console.log(aux.includes(today))
+        if( aux.includes(today) ){
+            newArrayToday.push(json.list[i].concat())
         };
 
     }
-
+    console.log(newArrayToday)
     
 }
 
@@ -263,7 +264,7 @@ function Convertreturn (countrySigla){
             return country = 'Zulu'
         break;
         default:
-            return country = ''
+            return country = 'Indefinido'
             
     }
 }
