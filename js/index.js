@@ -76,7 +76,7 @@ function FiveDayPrevisao(lat, lon){
 function FiveDayCards( json ){
     
     for(i=0; i<5; i++){
-        avg(json.list[i].main.temp_min,json.list[i].main.temp_max)
+        let mediaDiaGraus = avg(json.list[i].main.temp_min,json.list[i].main.temp_max)
         const cards = document.createElement('div');
         let aux = document.getElementById('section-cards')
         aux.innerHTML = '';
@@ -87,7 +87,7 @@ function FiveDayCards( json ){
                 <p class="hour p-cards blue">12:00</p>
                 <!--Colocar aqui o caminho da imagem-->
                 <img src="https://openweathermap.org/img/wn/${json.list[i].weather[0].icon}@4x.png" alt="Previsão Visual/IMG" class="img-clima-card blue">           
-                <p class="graus-hour p-cards blue">10ºC</p>
+                <p class="graus-hour p-cards blue">${mediaDiaGraus}ºC</p>
             </div>    
         </div>
         `;
@@ -96,15 +96,20 @@ function FiveDayCards( json ){
         console.log(cards)
     }
     
-    let newArrayToday;
+    let newArrayToday = [];
 
     for(i=0; i<json.cnt; i++) {
-        
+        //VERIFICAR OS OBJETOS TODOS
+        //console.log(`numero: ${i}`+json.list[i])
+        //COMPARAR À DATA ATUAL
         let today = new Date().toLocaleDateString('fr-CA', {timeZone: 'UTC'})
         let aux = json.list[i].dt_txt
         console.log(aux.includes(today))
+        //VERIFICAR EM CADA OBJETO SE A DATA É IGUAL AO DIA DE HOJE
         if( aux.includes(today) ){
-            newArrayToday.push(json.list[i].concat())
+            console.log(`numero: ${i}`+json.list[i])
+            newArrayToday.push([json.list[i]])
+            console.log(newArrayToday)
         };
 
     }
