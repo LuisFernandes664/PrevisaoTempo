@@ -75,6 +75,7 @@ function FiveDayPrevisao(lat, lon){
 
 function FiveDayCards( json ){
     
+    /*
     for(i=0; i<5; i++){
         let mediaDiaGraus = avg(json.list[i].main.temp_min,json.list[i].main.temp_max)
         const cards = document.createElement('div');
@@ -95,23 +96,49 @@ function FiveDayCards( json ){
         document.getElementById('section-cards').appendChild(cards);
         console.log(cards)
     }
+    */
     
     let newArrayToday = [];
 
     for(i=0; i<json.cnt; i++) {
         //VERIFICAR OS OBJETOS TODOS
         //console.log(`numero: ${i}`+json.list[i])
+
+        
+
         //COMPARAR À DATA ATUAL
-        let today = new Date().toLocaleDateString('fr-CA', {timeZone: 'UTC'})
+        let today = '2022-07-21'//new Date().toLocaleDateString('fr-CA', {timeZone: 'UTC'})
         let aux = json.list[i].dt_txt
         console.log(aux.includes(today))
         //VERIFICAR EM CADA OBJETO SE A DATA É IGUAL AO DIA DE HOJE
         if( aux.includes(today) ){
-            console.log(`numero: ${i}`+json.list[i])
             newArrayToday.push([json.list[i]])
-            console.log(newArrayToday)
         };
 
+    }
+    console.log(newArrayToday[0])
+    for(i=0; i<newArrayToday.length; i++){
+
+        const cards = document.createElement('div');
+        let aux = document.getElementById('section-cards1')
+        console.log(newArrayToday[i][0].weather[0].icon);
+        console.log(newArrayToday[i][0].main.temp)
+        let testettstts = newArrayToday[i][0].dt_txt
+        console.log(testettstts.getUTCHours().toString().padStart(2, "0"))
+        console.log('Horas: '+newArrayToday[i][0].dt_txt.getHours()+'Min: '+newArrayToday[i][0].dt_txt.getMinutes())
+        aux.innerHTML = '';
+        cards.innerHTML = `
+            <div class="card blue">
+                <div class="all-card blue">
+                    <p class="hour p-cards blue">12:00</p>
+                    <!--Colocar aqui o caminho da imagem-->
+                    <img src="https://openweathermap.org/img/wn/${newArrayToday[i][0].weather[0].icon}@4x.png" alt="Previsão Visual/IMG"class="img-clima-card blue">           
+                    <p class="graus-hour p-cards blue">${KtoC(newArrayToday[i][0].main.temp)}ºC</p>
+                </div>    
+            </div>
+        `;
+        aux.appendChild(cards);
+        console.log(cards)
     }
     console.log(newArrayToday)
     
