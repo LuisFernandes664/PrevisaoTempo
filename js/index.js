@@ -6,22 +6,19 @@ const form = document.getElementById('form')
 form.addEventListener('submit', getCity);
 
 
-function getCity2123() {
-    console.log('ola testes')
-}
-
 let country;
 function getCity(e){
     //nao fazer load à pagina quando faço submit
     e.preventDefault();
+
     let city = document.getElementById('search').value;
+
     if(!city){
-        alert('Digite Uma Cidade')
-    }
-    document.getElementById('search').value = '';
+        alert('Digite uma Cidade')
+    }else{
+        document.getElementById('search').value = '';
 
-
-    return fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`)
+        return fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`)
             .then(data => data.json())
             .then(json => {
                 
@@ -34,32 +31,28 @@ function getCity(e){
                 let temp = KtoC(json.main.temp);
                 let tempo = document.getElementById('graus')
                 tempo.innerHTML = temp+ 'ºC'
-
                 // CAIXA INFO
                 let humidade = document.getElementById('humidade')
                 humidade.innerHTML = json.main.humidity + '%';
-
                 let velocidadeVento = document.getElementById('velocidade-vento')
                 velocidadeVento.innerHTML = json.wind.speed + 'km/h'
-
                 let nublado = document.getElementById('nublado')
                 nublado.innerHTML = json.clouds.all + '%'
-
                 let pressaoAtmosferica = document.getElementById('pressao-atmosferica')
                 pressaoAtmosferica.innerHTML = json.main.pressure + 'mba'
-
-                FiveDayPrevisao(json.coord.lat, json.coord.lon);
-
+                HoursPrevisao(json.coord.lat, json.coord.lon);
+                
                 console.log(json)
             })
             .catch(err => console.log('Erro: ', err));
+    }        
 }
 //Kelvin to Cesius
 function KtoC(K) {
     return Math.floor(K - 273.15);
 }
 
-function FiveDayPrevisao(lat, lon){
+function HoursPrevisao(lat, lon){
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apikey}`)
 
     .then(data => data.json())
@@ -107,7 +100,7 @@ function FiveDayCards( json ){
         
 
         //COMPARAR À DATA ATUAL
-        let today = '2022-07-21'//new Date().toLocaleDateString('fr-CA', {timeZone: 'UTC'})
+        let today = '2022-07-24'//new Date().toLocaleDateString('fr-CA', {timeZone: 'UTC'}) //
         let aux = json.list[i].dt_txt
         console.log(aux.includes(today))
         //VERIFICAR EM CADA OBJETO SE A DATA É IGUAL AO DIA DE HOJE
@@ -116,31 +109,44 @@ function FiveDayCards( json ){
         };
 
     }
-    console.log(newArrayToday[0])
-    for(i=0; i<newArrayToday.length; i++){
-
-        const cards = document.createElement('div');
-        let aux = document.getElementById('section-cards1')
-        console.log(newArrayToday[i][0].weather[0].icon);
-        console.log(newArrayToday[i][0].main.temp)
-        let testettstts = newArrayToday[i][0].dt_txt
-        console.log(testettstts.getUTCHours().toString().padStart(2, "0"))
-        console.log('Horas: '+newArrayToday[i][0].dt_txt.getHours()+'Min: '+newArrayToday[i][0].dt_txt.getMinutes())
+    let cards
+    
+    let aux = document.getElementById('section-cards1')
+    console.log('newarray ',newArrayToday)
+    newArrayToday.forEach(element => {
+        cards = document.createElement('div');
+        cards.className = 'card blue';
+        console.log(element[0])
         aux.innerHTML = '';
         cards.innerHTML = `
-            <div class="card blue">
+                <div class="all-card blue">
+                    <p class="hour p-cards blue">12:00</p>
+                    <!--Colocar aqui o caminho da imagem-->
+                    <img src="https://openweathermap.org/img/wn/${element[0].weather[0].icon}@4x.png" alt="Previsão Visual/IMG"class="img-clima-card blue">           
+                    <p class="graus-hour p-cards blue">${KtoC(element[0].main.temp)}ºC</p>
+                </div>    
+        `;
+        console.log(cards)
+        console.log('1', element[0].dt_txt)
+        aux.prependTo(cards);
+    })
+    
+    /*for(i=0; i<newArrayToday.length; i++){
+        console.log(newArrayToday[0])
+        aux.innerHTML = '';
+        cards.innerHTML = `
                 <div class="all-card blue">
                     <p class="hour p-cards blue">12:00</p>
                     <!--Colocar aqui o caminho da imagem-->
                     <img src="https://openweathermap.org/img/wn/${newArrayToday[i][0].weather[0].icon}@4x.png" alt="Previsão Visual/IMG"class="img-clima-card blue">           
                     <p class="graus-hour p-cards blue">${KtoC(newArrayToday[i][0].main.temp)}ºC</p>
                 </div>    
-            </div>
         `;
         aux.appendChild(cards);
-        console.log(cards)
-    }
-    console.log(newArrayToday)
+    }*/
+    console.log('cards ',cards)
+    console.log('aux ',aux)
+    console.log('newarray ',newArrayToday)
     
 }
 
