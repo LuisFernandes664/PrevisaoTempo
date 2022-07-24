@@ -100,9 +100,11 @@ function FiveDayCards( json ){
         
 
         //COMPARAR À DATA ATUAL
-        let today = '2022-07-24'//new Date().toLocaleDateString('fr-CA', {timeZone: 'UTC'}) //
+        let today = new Date().toLocaleDateString('fr-CA', {timeZone: 'UTC'}) //
         let aux = json.list[i].dt_txt
+        //let getHours = aux.split(' ')[1];
         console.log(aux.includes(today))
+        console.log('Aux :', aux)
         //VERIFICAR EM CADA OBJETO SE A DATA É IGUAL AO DIA DE HOJE
         if( aux.includes(today) ){
             newArrayToday.push([json.list[i]])
@@ -112,15 +114,16 @@ function FiveDayCards( json ){
     let cards
     
     let aux = document.getElementById('section-cards1')
+    aux.innerHTML = '';
     console.log('newarray ',newArrayToday)
     newArrayToday.forEach(element => {
         cards = document.createElement('div');
         cards.className = 'card blue';
         console.log(element[0])
-        aux.innerHTML = '';
+        console.log(element[0].dt_txt.split(' ')[1])
         cards.innerHTML = `
                 <div class="all-card blue">
-                    <p class="hour p-cards blue">12:00</p>
+                    <p class="hour p-cards blue">${element[0].dt_txt.split(' ')[1]}</p>
                     <!--Colocar aqui o caminho da imagem-->
                     <img src="https://openweathermap.org/img/wn/${element[0].weather[0].icon}@4x.png" alt="Previsão Visual/IMG"class="img-clima-card blue">           
                     <p class="graus-hour p-cards blue">${KtoC(element[0].main.temp)}ºC</p>
@@ -128,7 +131,7 @@ function FiveDayCards( json ){
         `;
         console.log(cards)
         console.log('1', element[0].dt_txt)
-        aux.prependTo(cards);
+        aux.appendChild(cards);
     })
     
     /*for(i=0; i<newArrayToday.length; i++){
