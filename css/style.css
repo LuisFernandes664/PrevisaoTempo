@@ -160,6 +160,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 180px
     }
     
     .graus{
@@ -247,10 +248,6 @@
 
     /*CARDS HOURS =====================*/
 
-    .section-cards{
-        margin-top: 20px;
-    }
-
     .card{
         height: 147px;
         width: 69px;
@@ -264,6 +261,8 @@
     .section-cards{
         display: flex;
         flex-wrap: nowrap;
+        margin-top: 20px;
+        overflow-x: auto;
     }
     
     .section-cards {
@@ -273,11 +272,12 @@
         border-radius: .5rem;
         transition: box-shadow .3s, transform .3s;
     }
-    
-    .section-cards:hover {
+
+    .card:hover {
+        z-index: 999;
         transform: translateY(-10px);
     }
-
+    
     .hour{
         color:#FFFFFF;
     }
@@ -305,15 +305,10 @@
         font-size: 20px;
         text-align: center;
     }
-    /*
-    .img-clima-card::first-child{
-        background: var(--blue-claro);
-        width: 68px;
-        height: 68px;
-        margin: auto;
-    }
-    */
+
     .img-clima-card{
+        position: relative;
+        top: 10px;
         width: 68px;
         height: 68px;
         margin: auto;

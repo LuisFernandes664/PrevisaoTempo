@@ -6,14 +6,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="./js/teste.js" defer></script>
 </head>
 <body>
+    <section class="overview-hours">
+        <div class="head">
+            <div class="header-hours">
+                <p class="today day">Hoje</p>
+            </div>
+            <div class="header-hours ">
+                <p class="view-all day">See all</p>
+            </div>
+        </div>
+        <div class="section-cards" id="section-cards1">
+            <div class="card item blue">
+                <div class="all-card blue">
+                    <p class="hour p-cards blue">12:00</p>
+                    <svg class="img-clima-card blue" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="68" height="68" fill="url(#pattern0)"/>
+                        <defs>
+                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_5_44" transform="scale(0.005)"/>
+                        </pattern>
+                        <image id="image0_5_44" width="200" height="200" xlink:href="data:image/png;base64,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ZeQJkBndXpE3WEGuIfu8A1o7Oqb/9Hec7Pvho9EIV/76ACtIFplRqjnNO4hk3bn4MjvX/sAEyUJ16iODVNHf3p7bvENmf8iLqpOHcw3eXvkEEySLbI92G18mkrv29kN7OzoOJUR0J4AXAedmjkL5B5e7Z9HU1BQfGUlnJgi/ZhjYcOjQIZ7cWCKYINMYH+o1dgFYPpsFhrNvd3udqrNbBP0iepDbeb3BBHHJ17v9rJ6ZzndkkrJ70ss9hoGdrF6FxT5InjU1NcXr6xuPA86b419Gd2ax4gwYU31/jeMg67wMuYMJkmcjI6P7RK6afT8ww73rT031ourMzu+iuWOC5JlqtsnBUE4Jkrk1476PIsEEyaPGxsbaySt/Z87JVj36OfteeEyQPIpEItk64z25jH6N7z2ZugKJYEabtCg/mCB51Nra2q+q+6d4K6dnJ46MWNeoQJx99wITJM86Otr2iMgeQDvHt8jqzlyXphiGk61C5FSBKP84D1Jk6uu37hORyedcvdjefmivJwGVOCZIEWpqaoqn02O7HMdZbhjGp21tb0x120ZERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERExeD/AfXmrG2wO58pAAAAAElFTkSuQmCC"/>
+                        </defs>
+                        </svg>                        
+                        <p class="graus-hour p-cards blue">10ºC</p>
+                </div>    
+            </div>
+            <div class="card item white">
+                <div class="all-card white">
+                    <p class="hour p-cards white grey">13:00</p>
+                    <svg class="img-clima-card white" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="68" height="68" fill="url(#pattern0)"/>
+                        <defs>
+                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_5_47" transform="scale(0.005)"/>
+                        </pattern>
+                        <image id="image0_5_47" width="200" height="200" xlink:href="data:image/png;base64,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"/>
+                        </defs>
+                        </svg>
+                        
+                        <p class="graus-hour p-cards white grey">5ºC</p>
+                </div>    
+            </div>
+            <div class="card item white">
+                <div class="all-card white">
+                    <p class="hour p-cards white grey">14:00</p>
+                    
+                    <svg class="img-clima-card white" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="68" height="68" fill="url(#pattern0)"/>
+                        <defs>
+                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_5_59" transform="scale(0.005)"/>
+                        </pattern>
+                        <image id="image0_5_59" width="200" height="200" xlink:href="data:image/png;base64,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"/>
+                        </defs>
+                        </svg>
+                        
 
-    
-
-
-
-
+                        <p class="graus-hour p-cards white grey">15ºC</p>
+                </div>    
+            </div>
+            <div class="card item white">
+                <div class="all-card white">
+                    <p class="hour p-cards white grey">15:00</p>
+                    <svg class="img-clima-card white" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="68" height="68" fill="url(#pattern0)"/>
+                        <defs>
+                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_5_62" transform="scale(0.005)"/>
+                        </pattern>
+                        <image id="image0_5_62" width="200" height="200" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAADTElEQVR4nO3dsW0jRxQG4DckIexlKoHuQO7AzlaEA14HdxUcVIHhCuwOpA7E4EAxs0pQCSyBmWRDx3FAMHBicFc6D2f3+xrQw4o/sDPz5m0EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQKTSBdTq+vp6mXN8KVlDzmk3ncZv6/X6qWQdQyYgPRzCke5L1xERkXPsPny4+GG1Wu1K1zJEk9IF1CjndFW6hqOU4vLl5fVs6hkaAYH/ICC97O9yjjN5pcmPm83Xx9JVDJU1SE9t285Tmi5zzpcFy9huNuu7gn8fAAAAAChu0Nu8bfvLT6VrKON1u9lstqWrGIJBBmSxWFx9+xZ/phQlzyhKu9ts1p9LF1G7QZ6k7/dxP/JwRER8atvFp9JF1G6QAYmIeekCzoTn8EZDDYj37wPP4Y0GGZDJJD6GH8edPq23G+Qi/WixWFzt95MRrkXsYgEAAADAeAx6m/d7ODRA7kfaBNnLtmkuVrXO7ZqVLqAmh96m/W3pOmrz/Pz3l4j4sXQdfQzyJP17yTl+L11DjVKKq1qvHghIBzqEx0dAutHb1EPOsWuaWZUDtq1BOmiai5vn5792KYVZuCc6TqCvdZEOAAAAAOev+l6s8V6r7ct13C6qDkjbLm4jwuyn7j4b6HCaak/S27adh3D0oqfsdNUGJGJmKFpPespOV21Ammb2dD4f0qxN9tHPE1UbkNVqtZtO4+cwIK6j/DiZpJvSVQAAAAAA76XqVpP3UuvEjTLG1cs16oC0bTvPeXLvjnlno/lAaLUHhe9j8qtw9DKaD4SOPCBZP1d/o3h2Iw9IGs279HtLKVc556qrUQekaS5uco5R/KPfU875j4eHh1XpOv4Po16kHx3ulmifP0XTzJ4MgQMAAACAc2Kbt4PDdnC6jUg1NzduJ5P4uF6vnf+cYNQHhd1VH46IiPl+H/eli6iFgHRSfTiOHIqeSEC6GUTvlnlipxOQDlLKN0P4caUU5mKdyCK9o+Vyefny8lrxHZJx3QgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIB/+Qf3cMYwpQC9mgAAAABJRU5ErkJggg=="/>
+                        </defs>
+                        </svg>
+                          
+                        <p class="graus-hour p-cards white grey">9ºC</p>
+                </div>    
+            </div>
+            <div class="card item white">
+                <div class="all-card white">
+                    <p class="hour p-cards white grey">16:00</p>
+                    <svg class="img-clima-card white" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="68" height="68" fill="url(#pattern0)"/>
+                        <defs>
+                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_5_62" transform="scale(0.005)"/>
+                        </pattern>
+                        <image id="image0_5_62" width="200" height="200" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAADTElEQVR4nO3dsW0jRxQG4DckIexlKoHuQO7AzlaEA14HdxUcVIHhCuwOpA7E4EAxs0pQCSyBmWRDx3FAMHBicFc6D2f3+xrQw4o/sDPz5m0EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQKTSBdTq+vp6mXN8KVlDzmk3ncZv6/X6qWQdQyYgPRzCke5L1xERkXPsPny4+GG1Wu1K1zJEk9IF1CjndFW6hqOU4vLl5fVs6hkaAYH/ICC97O9yjjN5pcmPm83Xx9JVDJU1SE9t285Tmi5zzpcFy9huNuu7gn8fAAAAAChu0Nu8bfvLT6VrKON1u9lstqWrGIJBBmSxWFx9+xZ/phQlzyhKu9ts1p9LF1G7QZ6k7/dxP/JwRER8atvFp9JF1G6QAYmIeekCzoTn8EZDDYj37wPP4Y0GGZDJJD6GH8edPq23G+Qi/WixWFzt95MRrkXsYgEAAADAeAx6m/d7ODRA7kfaBNnLtmkuVrXO7ZqVLqAmh96m/W3pOmrz/Pz3l4j4sXQdfQzyJP17yTl+L11DjVKKq1qvHghIBzqEx0dAutHb1EPOsWuaWZUDtq1BOmiai5vn5792KYVZuCc6TqCvdZEOAAAAAOev+l6s8V6r7ct13C6qDkjbLm4jwuyn7j4b6HCaak/S27adh3D0oqfsdNUGJGJmKFpPespOV21Ammb2dD4f0qxN9tHPE1UbkNVqtZtO4+cwIK6j/DiZpJvSVQAAAAAA76XqVpP3UuvEjTLG1cs16oC0bTvPeXLvjnlno/lAaLUHhe9j8qtw9DKaD4SOPCBZP1d/o3h2Iw9IGs279HtLKVc556qrUQekaS5uco5R/KPfU875j4eHh1XpOv4Po16kHx3ulmifP0XTzJ4MgQMAAACAc2Kbt4PDdnC6jUg1NzduJ5P4uF6vnf+cYNQHhd1VH46IiPl+H/eli6iFgHRSfTiOHIqeSEC6GUTvlnlipxOQDlLKN0P4caUU5mKdyCK9o+Vyefny8lrxHZJx3QgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIB/+Qf3cMYwpQC9mgAAAABJRU5ErkJggg=="/>
+                        </defs>
+                        </svg>
+                          
+                        <p class="graus-hour p-cards white grey">9ºC</p>
+                </div>    
+            </div>
+            <div class="card item white">
+                <div class="all-card white">
+                    <p class="hour p-cards white grey">17:00</p>
+                    <svg class="img-clima-card white" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="68" height="68" fill="url(#pattern0)"/>
+                        <defs>
+                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_5_62" transform="scale(0.005)"/>
+                        </pattern>
+                        <image id="image0_5_62" width="200" height="200" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAADTElEQVR4nO3dsW0jRxQG4DckIexlKoHuQO7AzlaEA14HdxUcVIHhCuwOpA7E4EAxs0pQCSyBmWRDx3FAMHBicFc6D2f3+xrQw4o/sDPz5m0EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQKTSBdTq+vp6mXN8KVlDzmk3ncZv6/X6qWQdQyYgPRzCke5L1xERkXPsPny4+GG1Wu1K1zJEk9IF1CjndFW6hqOU4vLl5fVs6hkaAYH/ICC97O9yjjN5pcmPm83Xx9JVDJU1SE9t285Tmi5zzpcFy9huNuu7gn8fAAAAAChu0Nu8bfvLT6VrKON1u9lstqWrGIJBBmSxWFx9+xZ/phQlzyhKu9ts1p9LF1G7QZ6k7/dxP/JwRER8atvFp9JF1G6QAYmIeekCzoTn8EZDDYj37wPP4Y0GGZDJJD6GH8edPq23G+Qi/WixWFzt95MRrkXsYgEAAADAeAx6m/d7ODRA7kfaBNnLtmkuVrXO7ZqVLqAmh96m/W3pOmrz/Pz3l4j4sXQdfQzyJP17yTl+L11DjVKKq1qvHghIBzqEx0dAutHb1EPOsWuaWZUDtq1BOmiai5vn5792KYVZuCc6TqCvdZEOAAAAAOev+l6s8V6r7ct13C6qDkjbLm4jwuyn7j4b6HCaak/S27adh3D0oqfsdNUGJGJmKFpPespOV21Ammb2dD4f0qxN9tHPE1UbkNVqtZtO4+cwIK6j/DiZpJvSVQAAAAAA76XqVpP3UuvEjTLG1cs16oC0bTvPeXLvjnlno/lAaLUHhe9j8qtw9DKaD4SOPCBZP1d/o3h2Iw9IGs279HtLKVc556qrUQekaS5uco5R/KPfU875j4eHh1XpOv4Po16kHx3ulmifP0XTzJ4MgQMAAACAc2Kbt4PDdnC6jUg1NzduJ5P4uF6vnf+cYNQHhd1VH46IiPl+H/eli6iFgHRSfTiOHIqeSEC6GUTvlnlipxOQDlLKN0P4caUU5mKdyCK9o+Vyefny8lrxHZJx3QgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIB/+Qf3cMYwpQC9mgAAAABJRU5ErkJggg=="/>
+                        </defs>
+                        </svg>
+                          
+                        <p class="graus-hour p-cards white grey">9ºC</p>
+                </div>    
+            </div>
+            <div class="card item white">
+                <div class="all-card white">
+                    <p class="hour p-cards white grey">20:00</p>
+                    <svg class="img-clima-card white" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="68" height="68" fill="url(#pattern0)"/>
+                        <defs>
+                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_5_62" transform="scale(0.005)"/>
+                        </pattern>
+                        <image id="image0_5_62" width="200" height="200" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAADTElEQVR4nO3dsW0jRxQG4DckIexlKoHuQO7AzlaEA14HdxUcVIHhCuwOpA7E4EAxs0pQCSyBmWRDx3FAMHBicFc6D2f3+xrQw4o/sDPz5m0EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQKTSBdTq+vp6mXN8KVlDzmk3ncZv6/X6qWQdQyYgPRzCke5L1xERkXPsPny4+GG1Wu1K1zJEk9IF1CjndFW6hqOU4vLl5fVs6hkaAYH/ICC97O9yjjN5pcmPm83Xx9JVDJU1SE9t285Tmi5zzpcFy9huNuu7gn8fAAAAAChu0Nu8bfvLT6VrKON1u9lstqWrGIJBBmSxWFx9+xZ/phQlzyhKu9ts1p9LF1G7QZ6k7/dxP/JwRER8atvFp9JF1G6QAYmIeekCzoTn8EZDDYj37wPP4Y0GGZDJJD6GH8edPq23G+Qi/WixWFzt95MRrkXsYgEAAADAeAx6m/d7ODRA7kfaBNnLtmkuVrXO7ZqVLqAmh96m/W3pOmrz/Pz3l4j4sXQdfQzyJP17yTl+L11DjVKKq1qvHghIBzqEx0dAutHb1EPOsWuaWZUDtq1BOmiai5vn5792KYVZuCc6TqCvdZEOAAAAAOev+l6s8V6r7ct13C6qDkjbLm4jwuyn7j4b6HCaak/S27adh3D0oqfsdNUGJGJmKFpPespOV21Ammb2dD4f0qxN9tHPE1UbkNVqtZtO4+cwIK6j/DiZpJvSVQAAAAAA76XqVpP3UuvEjTLG1cs16oC0bTvPeXLvjnlno/lAaLUHhe9j8qtw9DKaD4SOPCBZP1d/o3h2Iw9IGs279HtLKVc556qrUQekaS5uco5R/KPfU875j4eHh1XpOv4Po16kHx3ulmifP0XTzJ4MgQMAAACAc2Kbt4PDdnC6jUg1NzduJ5P4uF6vnf+cYNQHhd1VH46IiPl+H/eli6iFgHRSfTiOHIqeSEC6GUTvlnlipxOQDlLKN0P4caUU5mKdyCK9o+Vyefny8lrxHZJx3QgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIB/+Qf3cMYwpQC9mgAAAABJRU5ErkJggg=="/>
+                        </defs>
+                        </svg>
+                          
+                        <p class="graus-hour p-cards white grey">21ºC</p>
+                </div>    
+            </div>
+        </div>
+    </section>
 
 
 </body>

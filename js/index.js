@@ -94,10 +94,6 @@ function FiveDayCards( json ){
     let newArrayToday = [];
 
     for(i=0; i<json.cnt; i++) {
-        //VERIFICAR OS OBJETOS TODOS
-        //console.log(`numero: ${i}`+json.list[i])
-
-        
 
         //COMPARAR À DATA ATUAL
         let today = new Date().toLocaleDateString('fr-CA', {timeZone: 'UTC'}) //
@@ -105,52 +101,51 @@ function FiveDayCards( json ){
         //let getHours = aux.split(' ')[1];
         console.log(aux.includes(today))
         console.log('Aux :', aux)
+        console.log('i: ',i)
         //VERIFICAR EM CADA OBJETO SE A DATA É IGUAL AO DIA DE HOJE
-        if( aux.includes(today) ){
+        if ( aux.includes(today) || i <= 7 ) {
             newArrayToday.push([json.list[i]])
-        };
-
+        }
     }
+
+
     let cards
-    
     let aux = document.getElementById('section-cards1')
     aux.innerHTML = '';
-    console.log('newarray ',newArrayToday)
-    newArrayToday.forEach(element => {
+
+    //LOOP AO ARRAY DE OBJETOS PARA COLOCAR NO HTML
+
+    newArrayToday.forEach( (element, index) => {
+
+        //(( VALIDAÇÃO POR CAUSA DAS CORES DOS CARDS))//
+
+        let color = 'white';
+        let pcolor = 'grey'
+
+        if ( index == 0){
+            color = 'blue'
+            pcolor = ''
+        }
+        
+        ///////////////////////////////////////////////
+
         cards = document.createElement('div');
-        cards.className = 'card blue';
-        console.log(element[0])
-        console.log(element[0].dt_txt.split(' ')[1])
+        cards.className = `card ${color}`;
+        
+        let hours = element[0].dt_txt.split(' ')[1].split(':')[0];
+        let minutes = element[0].dt_txt.split(' ')[1].split(':')[1];
+
         cards.innerHTML = `
-                <div class="all-card blue">
-                    <p class="hour p-cards blue">${element[0].dt_txt.split(' ')[1]}</p>
+                <div class="all-card ${color}">
+                    <p class="hour p-cards ${color} ${pcolor}">${hours + ':' + minutes}</p>
                     <!--Colocar aqui o caminho da imagem-->
-                    <img src="https://openweathermap.org/img/wn/${element[0].weather[0].icon}@4x.png" alt="Previsão Visual/IMG"class="img-clima-card blue">           
-                    <p class="graus-hour p-cards blue">${KtoC(element[0].main.temp)}ºC</p>
+                    <img src="https://openweathermap.org/img/wn/${element[0].weather[0].icon}@4x.png" alt="Previsão Visual/IMG"class="img-clima-card ${color}">           
+                    <p class="graus-hour p-cards ${color} ${pcolor}">${KtoC(element[0].main.temp)}ºC</p>
                 </div>    
         `;
-        console.log(cards)
-        console.log('1', element[0].dt_txt)
+        
         aux.appendChild(cards);
     })
-    
-    /*for(i=0; i<newArrayToday.length; i++){
-        console.log(newArrayToday[0])
-        aux.innerHTML = '';
-        cards.innerHTML = `
-                <div class="all-card blue">
-                    <p class="hour p-cards blue">12:00</p>
-                    <!--Colocar aqui o caminho da imagem-->
-                    <img src="https://openweathermap.org/img/wn/${newArrayToday[i][0].weather[0].icon}@4x.png" alt="Previsão Visual/IMG"class="img-clima-card blue">           
-                    <p class="graus-hour p-cards blue">${KtoC(newArrayToday[i][0].main.temp)}ºC</p>
-                </div>    
-        `;
-        aux.appendChild(cards);
-    }*/
-    console.log('cards ',cards)
-    console.log('aux ',aux)
-    console.log('newarray ',newArrayToday)
-    
 }
 
 function avg(num1, num2){
