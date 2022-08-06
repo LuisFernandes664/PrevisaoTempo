@@ -1,0 +1,38 @@
+
+@media only screen and (max-width: 500px) and (min-width: 385px){
+    .mobile-container{
+        width: 100%;
+        min-height: 0vh;
+    }
+    .main{
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 385px) and (min-width: 350px){
+    .mobile-container{
+        width: 100%;
+        min-height: 0vh;
+    }
+    .main{
+        width: 100%;
+    }
+    
+    input[type="text"]:focus {
+        max-width: 160px;
+    }
+
+}
+
+@media only screen and (max-width: 350px) and (min-width: 300px){
+    .mobile-container{
+        width: 100%;
+        min-height: 0vh;
+    }
+    .main{
+        width: 100%;
+    }
+    
+    input[type="text"]:focus {
+        max-width: 120px;
+    }
+}

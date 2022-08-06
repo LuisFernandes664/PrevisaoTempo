@@ -1,32 +1,42 @@
+// load efect
+$(window).on("load",function(){
+    $(".loader-wrapper").fadeOut("slow");
+});
 
+const loader = document.querySelector('.loader-wrapper');
 
 const apikey = '0fe15371e2f5ef4035accd68fb8832ac';
 
 const form = document.getElementById('form')
 form.addEventListener('submit', getCity);
 
+function delay(n){
+    return new Promise(function(resolve){
+        setTimeout(resolve,n*1000);
+    });
+}
+
 
 let country;
 function getCity(e){
     //nao fazer load à pagina quando faço submit
     e.preventDefault();
+    // load efect
+    loader.attributeStyleMap.delete('display')
+    $(".loader-wrapper").fadeOut(2000);
 
     let city = document.getElementById('search').value;
-
     if(!city){
         alert('Digite uma Cidade')
     }else{
         document.getElementById('search').value = '';
-
         return fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`)
             .then(data => data.json())
             .then(json => {
-                
                 let location = document.getElementById('location');
                 location.innerHTML = (json.name + ', '+ Convertreturn(json.sys.country))
                 //IMG TEMP
                 document.getElementById('principal-IMG').src = `https://openweathermap.org/img/wn/${json.weather[0].icon}@4x.png`;
-                
                 //CONVET TEMPERATURA PARA CELSIUS
                 let temp = KtoC(json.main.temp);
                 let tempo = document.getElementById('graus')
@@ -41,11 +51,14 @@ function getCity(e){
                 let pressaoAtmosferica = document.getElementById('pressao-atmosferica')
                 pressaoAtmosferica.innerHTML = json.main.pressure + 'mba'
                 HoursPrevisao(json.coord.lat, json.coord.lon);
-                
                 console.log(json)
+                //loader.style.display = 'none';
             })
-            .catch(err => console.log('Erro: ', err));
-    }        
+            .catch(err => {
+                //loader.style.display = 'none';
+                console.log('Erro: ', err)
+            });
+    }      
 }
 //Kelvin to Cesius
 function KtoC(K) {

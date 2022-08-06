@@ -13,7 +13,7 @@
   --input: #ffffff;
 }
 
-@media only screen and (max-width: 500px) {
+/*@media only screen and (max-width: 500px) {*/
 
   .search-box{
       width: fit-content;
@@ -313,4 +313,4 @@
       height: 68px;
       margin: auto;
   }
-}
+/*}*/
