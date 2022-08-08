@@ -3,6 +3,23 @@ $(window).on("load",function(){
     $(".loader-wrapper").fadeOut("slow");
 });
 
+////////// EFEITO EXPANÇÃO FULL SCREEN INPUT SEARCH ??????????
+/*
+const searchInput = document.querySelector(".search-container input");
+const searchContainer = document.querySelector(".search-container");
+const searchCloseBtn = document.querySelector(".search-close-btn");
+
+searchInput.addEventListener("click", () => {
+  searchContainer.classList.add("active");
+  searchCloseBtn.style.display = "block";
+});
+
+searchCloseBtn.addEventListener("click", () => {
+  searchContainer.classList.remove("active");
+  searchCloseBtn.style.display = "none";
+  searchInput.value = "";
+});
+*/
 const loader = document.querySelector('.loader-wrapper');
 
 const apikey = '0fe15371e2f5ef4035accd68fb8832ac';
