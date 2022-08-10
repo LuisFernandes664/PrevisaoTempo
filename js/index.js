@@ -150,28 +150,36 @@ function FiveDayCards( json ){
         //(( VALIDAÇÃO POR CAUSA DAS CORES DOS CARDS))//
 
         let color = 'white';
-        let pcolor = 'grey'
+        let pcolor = 'grey';
+        let style = '';
 
         if ( index == 0){
             color = 'blue'
             pcolor = ''
+            style = 'style="margin-left: 16px;"';
         }
         
         ///////////////////////////////////////////////
-
         cards = document.createElement('div');
-        cards.className = `card ${color}`;
+        cards.className = `swiper-slide`
+        cards1 = document.createElement('div');
+        cards1.className = `card item ${color}`;
+
+        cards = cards.appendChild(cards1);
         
         let hours = element[0].dt_txt.split(' ')[1].split(':')[0];
         let minutes = element[0].dt_txt.split(' ')[1].split(':')[1];
 
+        console.log(cards)
+        console.log(cards1)
+
         cards.innerHTML = `
-                <div class="all-card ${color}">
-                    <p class="hour p-cards ${color} ${pcolor}">${hours + ':' + minutes}</p>
-                    <!--Colocar aqui o caminho da imagem-->
-                    <img src="https://openweathermap.org/img/wn/${element[0].weather[0].icon}@4x.png" alt="Previsão Visual/IMG"class="img-clima-card ${color}">           
-                    <p class="graus-hour p-cards ${color} ${pcolor}">${KtoC(element[0].main.temp)}ºC</p>
-                </div>    
+                    <div class="all-card ${color}">
+                        <p class="hour p-cards ${color} ${pcolor}">${hours + ':' + minutes}</p>
+                        <!--Colocar aqui o caminho da imagem-->
+                        <img src="https://openweathermap.org/img/wn/${element[0].weather[0].icon}@4x.png" alt="Previsão Visual/IMG"class="img-clima-card ${color}">           
+                        <p class="graus-hour p-cards ${color} ${pcolor}">${KtoC(element[0].main.temp)}ºC</p>
+                    </div> 
         `;
         
         aux.appendChild(cards);
