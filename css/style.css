@@ -471,13 +471,10 @@
 
 
 .swiper {
-  width: 100%;
+  width: 95%;
   height: 100%;
 }
 
-.mySwiper{
-  margin-left: 100px;
-}
 
 .swiper-slide {
   text-align: center;

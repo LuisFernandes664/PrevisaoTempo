@@ -25,18 +25,29 @@
 
 </head>
 <body>
-    <!--<div class="first-search">
-        <div class="search-container">
-            <div class="search-box">
-              <form action="#">
-                <div class="search-icon">
-                  <i class="fas fa-search"></i>
-                </div>
-                <input type="text" placeholder="Search here..." />
-              </form>
-            </div>
-          </div>
-    </div>-->
+    <!--
+        <div class="btn-header">
+                    <form id="form" class="search-box">
+                        <div class="first-search">
+                            <div class="search-container">
+                                <div class="search-box">
+                                  <form action="#">
+                                    <div class="search-icon">
+                                      <i class="fas fa-search"></i>
+                                    </div>
+                                    <button class="btn-search" id="btn-search" type="submit">
+                                        <svg class="btn-menu" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M25.3434 22.5148L19.3665 16.5386C20.7256 14.521 21.3962 12.0002 21.0372 9.31415C20.425 4.74536 16.6801 1.02731 12.1063 0.448311C5.30605 -0.412076 -0.412187 5.30553 0.448345 12.1051C1.02756 16.6803 4.74651 20.4278 9.31631 21.037C12.0027 21.3959 14.5242 20.7256 16.5415 19.3664L22.5184 25.3426C23.2983 26.1225 24.5631 26.1225 25.3431 25.3426C26.1223 24.5618 26.1223 23.2936 25.3434 22.5148ZM4.3119 10.747C4.3119 7.22322 7.17901 4.35643 10.7032 4.35643C14.2275 4.35643 17.0946 7.22322 17.0946 10.747C17.0946 14.2709 14.2275 17.1377 10.7032 17.1377C7.17901 17.1377 4.3119 14.2719 4.3119 10.747Z" fill="#808080"/>
+                                            </svg>
+                                    </button>
+                                    <input class="input-search" id="search" placeholder="Pesquisa Aqui..." />
+                                  </form>
+                                </div>
+                              </div>
+                        </div>
+                        
+                    </form>
+                </div><!--HEADER SEARCH-->
     <div class="mobile-container">
         <main class="main">
             <section class="head-menu">
@@ -113,10 +124,10 @@
                         <p class="view-all day">See all</p>
                     </div>
                 </div>
-                <div class="swiper mySwiper section-cards swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
-                    <div class="swiper-wrapper" id="section-cards1" aria-live="polite"
+                <div class="swiper mySwiper section-cards">
+                    <div class="swiper-wrapper" id="section-cards1"
                         style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-                        <div class="swiper-slide" style="margin-left: 16px;" role="group">
+                        <div class="swiper-slide" role="group">
                             <div class="card item blue">
                                 <div class="all-card blue">
                                     <p class="hour p-cards blue">12:00</p>
@@ -280,12 +291,29 @@
 
     <script>
         var swiper = new Swiper(".mySwiper", {
-          slidesPerView: 5,
-          spaceBetween: 30,
+          slidesPerView: 4,
+          spaceBetween: 7,
           pagination: {
             el: ".swiper-pagination",
             clickable: true,
           },
+          breakpoints: {
+            // when window width is >= 320px
+            320: {
+            slidesPerView: 4,
+            spaceBetween: 7
+            },
+            // when window width is >= 480px
+            480: {
+            slidesPerView: 4,
+            spaceBetween: 7
+            },
+            // when window width is >= 640px
+            640: {
+            slidesPerView: 4,
+            spaceBetween: 7
+            }
+        }
         });
     </script>
 </body>

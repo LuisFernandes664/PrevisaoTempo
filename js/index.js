@@ -6,10 +6,11 @@ $(window).on("load",function(){
 ////////// EFEITO EXPANÇÃO FULL SCREEN INPUT SEARCH ??????????
 /*
 const searchInput = document.querySelector(".search-container input");
+const btn = document.querySelector(".btn-search");
 const searchContainer = document.querySelector(".search-container");
 const searchCloseBtn = document.querySelector(".search-close-btn");
 
-searchInput.addEventListener("click", () => {
+btn.addEventListener("click", () => {
   searchContainer.classList.add("active");
   searchCloseBtn.style.display = "block";
 });
@@ -129,11 +130,8 @@ function FiveDayCards( json ){
         let today = new Date().toLocaleDateString('fr-CA', {timeZone: 'UTC'}) //
         let aux = json.list[i].dt_txt
         //let getHours = aux.split(' ')[1];
-        console.log(aux.includes(today))
-        console.log('Aux :', aux)
-        console.log('i: ',i)
         //VERIFICAR EM CADA OBJETO SE A DATA É IGUAL AO DIA DE HOJE
-        if ( aux.includes(today) || i <= 7 ) {
+        if ( aux.includes(today) || i <= 6 ) {
             newArrayToday.push([json.list[i]])
         }
     }
@@ -143,6 +141,7 @@ function FiveDayCards( json ){
     let aux = document.getElementById('section-cards1')
     aux.innerHTML = '';
 
+
     //LOOP AO ARRAY DE OBJETOS PARA COLOCAR NO HTML
 
     newArrayToday.forEach( (element, index) => {
@@ -151,35 +150,31 @@ function FiveDayCards( json ){
 
         let color = 'white';
         let pcolor = 'grey';
-        let style = '';
 
         if ( index == 0){
             color = 'blue'
             pcolor = ''
-            style = 'style="margin-left: 16px;"';
-        }
+        }        
         
         ///////////////////////////////////////////////
-        cards = document.createElement('div');
-        cards.className = `swiper-slide`
-        cards1 = document.createElement('div');
-        cards1.className = `card item ${color}`;
-
-        cards = cards.appendChild(cards1);
+        
+        let cards = document.createElement('div');
+       
         
         let hours = element[0].dt_txt.split(' ')[1].split(':')[0];
         let minutes = element[0].dt_txt.split(' ')[1].split(':')[1];
 
-        console.log(cards)
-        console.log(cards1)
-
         cards.innerHTML = `
+            <div class="swiper-slide" role="group">
+                <div class="card item ${color}">
                     <div class="all-card ${color}">
                         <p class="hour p-cards ${color} ${pcolor}">${hours + ':' + minutes}</p>
                         <!--Colocar aqui o caminho da imagem-->
                         <img src="https://openweathermap.org/img/wn/${element[0].weather[0].icon}@4x.png" alt="Previsão Visual/IMG"class="img-clima-card ${color}">           
                         <p class="graus-hour p-cards ${color} ${pcolor}">${KtoC(element[0].main.temp)}ºC</p>
                     </div> 
+                </div>
+            </div>
         `;
         
         aux.appendChild(cards);
