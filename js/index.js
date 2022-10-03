@@ -3,24 +3,57 @@ $(window).on("load",function(){
     $(".loader-wrapper").fadeOut("slow");
 });
 
-////////// EFEITO EXPANÇÃO FULL SCREEN INPUT SEARCH ??????????
-/*
+////////// EFEITO EXPANÇÃO FULL SCREEN INPUT SEARCH ////////////////////
+
+const btnOpen = document.querySelector(".search-icon");
 const searchInput = document.querySelector(".search-container input");
-const btn = document.querySelector(".btn-search");
 const searchContainer = document.querySelector(".search-container");
 const searchCloseBtn = document.querySelector(".search-close-btn");
+const btnNextOpen = document.querySelector(".btn-search1")
 
-btn.addEventListener("click", () => {
+btnOpen.addEventListener("click", () => {
   searchContainer.classList.add("active");
   searchCloseBtn.style.display = "block";
+  searchInput.style.display = "block";
+  btnNextOpen.style.display = "block";
+  btnOpen.style.display = "none"
 });
+
+btnNextOpen.addEventListener("click", () => {
+    searchContainer.classList.remove("active");
+    searchCloseBtn.style.display = "none";
+    searchInput.style.display = "none";
+    btnNextOpen.style.display = "none";
+    btnOpen.style.display = "block"
+    //searchInput.value = "";
+})
 
 searchCloseBtn.addEventListener("click", () => {
   searchContainer.classList.remove("active");
   searchCloseBtn.style.display = "none";
-  searchInput.value = "";
+  searchInput.style.display = "none";
+  btnNextOpen.style.display = "none";
+  btnOpen.style.display = "block"
+  //searchInput.value = "";
 });
-*/
+
+////////////////////////////////////////////////////////////
+
+/////////////////////// MENU HAMBERGUER ////////////////////
+
+const searchBtnClose = document.querySelector(".search-close-btn");
+const openBtn = document.querySelector(".mobile-sidebar")
+
+searchBtnClose.addEventListener("click", () => {
+  searchBtnClose.style.display = "none";
+});
+
+openBtn.addEventListener("click", () => {
+  searchBtnClose.style.display = "block";
+})
+
+////////////////////////////////////////////////////////////
+
 const loader = document.querySelector('.loader-wrapper');
 
 const apikey = '0fe15371e2f5ef4035accd68fb8832ac';
@@ -44,6 +77,7 @@ function getCity(e){
     $(".loader-wrapper").fadeOut(2000);
 
     let city = document.getElementById('search').value;
+    console.log(city)
     if(!city){
         alert('Digite uma Cidade')
     }else{

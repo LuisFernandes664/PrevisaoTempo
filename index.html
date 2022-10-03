@@ -9,10 +9,6 @@
     <link rel="stylesheet" href="./css/responsive.css">
     <!--<link rel="stylesheet" href="./css/owl.carousel.css">-->
     <script src="./js/index.js" defer></script>
-    
-    <script src="js/owl/jquery.min.js"></script>
-    <script src="js/owl/owl.carousel.min.js"></script>
-    <script src="js/owl/setup.js"></script>
     <script src="https://kit.fontawesome.com/1279c1fd3b.js" crossorigin="anonymous"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,50 +19,52 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
 
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 <body>
-    <!--
-        <div class="btn-header">
-                    <form id="form" class="search-box">
-                        <div class="first-search">
-                            <div class="search-container">
-                                <div class="search-box">
-                                  <form action="#">
-                                    <div class="search-icon">
-                                      <i class="fas fa-search"></i>
-                                    </div>
-                                    <button class="btn-search" id="btn-search" type="submit">
-                                        <svg class="btn-menu" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M25.3434 22.5148L19.3665 16.5386C20.7256 14.521 21.3962 12.0002 21.0372 9.31415C20.425 4.74536 16.6801 1.02731 12.1063 0.448311C5.30605 -0.412076 -0.412187 5.30553 0.448345 12.1051C1.02756 16.6803 4.74651 20.4278 9.31631 21.037C12.0027 21.3959 14.5242 20.7256 16.5415 19.3664L22.5184 25.3426C23.2983 26.1225 24.5631 26.1225 25.3431 25.3426C26.1223 24.5618 26.1223 23.2936 25.3434 22.5148ZM4.3119 10.747C4.3119 7.22322 7.17901 4.35643 10.7032 4.35643C14.2275 4.35643 17.0946 7.22322 17.0946 10.747C17.0946 14.2709 14.2275 17.1377 10.7032 17.1377C7.17901 17.1377 4.3119 14.2719 4.3119 10.747Z" fill="#808080"/>
-                                            </svg>
-                                    </button>
-                                    <input class="input-search" id="search" placeholder="Pesquisa Aqui..." />
-                                  </form>
-                                </div>
-                              </div>
-                        </div>
-                        
-                    </form>
-                </div><!--HEADER SEARCH-->
     <div class="mobile-container">
         <main class="main">
             <section class="head-menu">
-                <a href="./index2.html">
                 <div class="btn-header">
-                    <svg class="btn-menu" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 2.13083C0 0.954214 0.71566 0 1.59813 0H20.7756C21.6596 0 22.3738 0.954214 22.3738 2.13083C22.3738 3.30945 21.6596 4.26167 20.7756 4.26167H1.59813C0.71566 4.26167 0 3.30945 0 2.13083ZM3.19625 12.785C3.19625 11.6064 3.91191 10.6542 4.79438 10.6542H23.9719C24.8558 10.6542 25.57 11.6064 25.57 12.785C25.57 13.9636 24.8558 14.9158 23.9719 14.9158H4.79438C3.91191 14.9158 3.19625 13.9636 3.19625 12.785ZM20.7756 25.57H1.59813C0.71566 25.57 0 24.6178 0 23.4392C0 22.2605 0.71566 21.3083 1.59813 21.3083H20.7756C21.6596 21.3083 22.3738 22.2605 22.3738 23.4392C22.3738 24.6178 21.6596 25.57 20.7756 25.57Z" fill="#808080"/>
-                    </svg>
-                </div>
-                </a><!--HEADER HAMBURGUER-->
+                    <a href="#sidebar" class="mobile-sidebar mobile-open">
+                        <svg class="btn-menu" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 2.13083C0 0.954214 0.71566 0 1.59813 0H20.7756C21.6596 0 22.3738 0.954214 22.3738 2.13083C22.3738 3.30945 21.6596 4.26167 20.7756 4.26167H1.59813C0.71566 4.26167 0 3.30945 0 2.13083ZM3.19625 12.785C3.19625 11.6064 3.91191 10.6542 4.79438 10.6542H23.9719C24.8558 10.6542 25.57 11.6064 25.57 12.785C25.57 13.9636 24.8558 14.9158 23.9719 14.9158H4.79438C3.91191 14.9158 3.19625 13.9636 3.19625 12.785ZM20.7756 25.57H1.59813C0.71566 25.57 0 24.6178 0 23.4392C0 22.2605 0.71566 21.3083 1.59813 21.3083H20.7756C21.6596 21.3083 22.3738 22.2605 22.3738 23.4392C22.3738 24.6178 21.6596 25.57 20.7756 25.57Z" fill="#808080"/>
+                        </svg>
+                    </a>
+                    <nav id="sidebar" class="sidebar" aria-expanded="false">
+                        <a href="#" class="mobile-sidebar mobile-close">
+                            <div class="search-close-btn">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </a>
+                        <div class="sidebar__nav">
+                            <ul>
+                                <li><i class='bx bx-home-alt icon' ></i> <span>Dashboard</span> </li>
+                                <li><i class='bx bx-bell icon'></i> <span>Messages</span> </li>
+                                <li><i class="fa fa-user"></i> <span>Profile</span> </li>
+                                <li><i class="fa fa-cog"></i> <span>Settings</span> </li>
+                            </ul>
+                        </div>
+                    </nav>  
+                </div><!--HEADER HAMBURGUER-->
                 <div class="btn-header">
-                    <form id="form" class="search-box">
-                        <button class="btn-search" id="btn-search" type="submit">
-                            <svg class="btn-menu" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M25.3434 22.5148L19.3665 16.5386C20.7256 14.521 21.3962 12.0002 21.0372 9.31415C20.425 4.74536 16.6801 1.02731 12.1063 0.448311C5.30605 -0.412076 -0.412187 5.30553 0.448345 12.1051C1.02756 16.6803 4.74651 20.4278 9.31631 21.037C12.0027 21.3959 14.5242 20.7256 16.5415 19.3664L22.5184 25.3426C23.2983 26.1225 24.5631 26.1225 25.3431 25.3426C26.1223 24.5618 26.1223 23.2936 25.3434 22.5148ZM4.3119 10.747C4.3119 7.22322 7.17901 4.35643 10.7032 4.35643C14.2275 4.35643 17.0946 7.22322 17.0946 10.747C17.0946 14.2709 14.2275 17.1377 10.7032 17.1377C7.17901 17.1377 4.3119 14.2719 4.3119 10.747Z" fill="#808080"/>
-                                </svg>
-                        </button>
-                        <input onclick="getCity()" type="text" class="input-search" id="search" placeholder="Pesquisa Aqui...">
-                    </form>
+                    <div class="search-container">
+                        <div class="search-box">
+                            <form action="#" id="form">
+                                <div class="search-icon btn-search">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="view-search">
+                                    <input type="text" class="input-search" type="submit" id="search" placeholder="Pesquisa Aqui..." />
+                                    <button class="btn-search1" onclick="getCity()">Pesquisar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="search-close-btn">
+                        <i class="fas fa-times"></i>
+                    </div>
                 </div><!--HEADER SEARCH-->
             </section>
             <div class="local">

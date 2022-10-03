@@ -2,7 +2,7 @@
 *{
   margin: 0px;
   padding: 0px;
-  background-color: #E4EAF8;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 :root{
@@ -13,110 +13,109 @@
   --input: #ffffff;
 }
 
-
-.card {
-    height: 147px;
-    width: 69px;
-    margin-left: 15px;
-    top: 576px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  
-    border-radius: 10px;
-  }
-  .section-cards {
-    display: flex;
-    flex-wrap: nowrap;
-    margin-top: 20px;
-    overflow-x: auto;
-  }
-  
-  .section-cards {
-    overflow: hidden;
-    margin-left: 0.8rem;
-    margin-right: 0.8rem;
-    border-radius: 0.5rem;
-    transition: box-shadow 0.3s, transform 0.3s;
-  }
-  
-  .card:hover {
-    z-index: 999;
-    transform: translateY(-10px);
-  }
-  
-  .hour {
-    color: #ffffff;
-  }
-  .graus-hour {
-    color: #ffffff;
-  }
-  .blue {
-    background: var(--blue-claro);
-  }
-  .white {
-    background-color: var(--white);
-  }
-  .grey {
-    color: #c1c1c1;
-  }
-  .all-card {
-    border-radius: 10px;
-  }
-  .p-cards {
-    position: relative;
-    top: 10px;
-    font-family: "Quicksand";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    text-align: center;
-  }
-  
-  .img-clima-card {
-    position: relative;
-    top: 10px;
-    width: 68px;
-    height: 68px;
-    margin: auto;
-  }
-  
-
-.overview-hours{
-    height: 100vh;
-}
-
-.swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-}
-
-.swiper-slide img {
+.mobile-sidebar {
+  position: absolute;
+  top: 0;
+  z-index: 6;
+  padding: 10px;
+  background-color: #222;
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  cursor: pointer;
+  font-size: 26px;
 }
 
-.swiper-slide{
-    width: 100px; 
-    margin-right: 0;
+.mobile-sidebar:hover {
+  background-color: lighten(#222, 15%);
+}
+.mobile-sidebar.mobile-close {
+  right: 0;
+  border-radius: 0 0 0 50%;
+}
+.mobile-sidebar.mobile-open {
+  left: 0;
+  position: fixed;
+  border-radius: 0 0 50% 0;
+}
+
+.sidebar {
+  margin: 0;
+  width: 0;
+  position: fixed;
+  height: 100%;
+  flex-grow: 0;
+  background-color: #222;
+  font-size: 1rem;
+  font-weight: 600;
+  z-index: 5;
+  overflow: hidden;
+  transition: width 0.5s ease;
+  white-space: nowrap;
+  padding-top: 1.5rem;
+}
+
+.sidebar:target{
+  width: 100%;
+}
+
+.sidebar__nav ul{
+  list-style-type: none;
+  padding: 0;
+  /*margin: 2.4rem 0;
+  position: absolute;*/
+  margin: 2.4rem 0;
+  text-align: center;
+}
+
+.sidebar__nav li {
+  
+  color: white;
+  padding: 1rem 0.7rem;
+  cursor: pointer;
+  margin: 0;
+  transition: all 0.2s ease;
+  background-color: #222;
+}
+
+.sidebar__nav li span{
+  font-size: 20px;
+  padding: 0 10px;
+  background-color: transparent;
+}
+
+.sidebar__nav li:hover{
+  transition: all 0.2s ease;
+  background-color: rgb(72, 72, 72);
+}
+
+.sidebar__nav i {
+  font-size: 20px;
+  margin-left: 20px;
+  transform: scaleY(0);
+  transition: all 0.2s ease;
+}
+
+.sidebar__nav:hover {
+  background-color: lighten(#222, 15%);
+}
+
+.sidebar__nav i {
+  transform: scaleY(1);
+}
+
+.search-close-btn {
+  position: fixed;
+  top: 20px;
+  right: 48px;
+  z-index: 200;
+  color: #eee;
+  font-size: 36px;
+  cursor: pointer;
+  display: none;
+  background-color: #222;
+}
+
+.fa-times{
+  color: #eee;
+  background-color: transparent;
+  transition: width 0.5s ease;
 }
