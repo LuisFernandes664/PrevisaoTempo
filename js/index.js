@@ -41,7 +41,7 @@ searchCloseBtn.addEventListener("click", () => {
 
 /////////////////////// MENU HAMBERGUER ////////////////////
 
-const searchBtnClose = document.querySelector(".search-close-btn");
+const searchBtnClose = document.querySelector(".search-close-btn-menu");
 const openBtn = document.querySelector(".mobile-sidebar")
 
 searchBtnClose.addEventListener("click", () => {

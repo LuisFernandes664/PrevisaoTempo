@@ -161,7 +161,7 @@
   transform: scaleY(1);
 }
 
-.search-close-btn {
+.search-close-btn, .search-close-btn-menu {
   position: fixed;
   top: 20px;
   right: 48px;
@@ -172,6 +172,7 @@
   display: none;
   background-color: transparent;
 }
+
 
 .fa-times{
   color: #eee;
@@ -259,7 +260,7 @@
 
   }
   
-  .search-close-btn {
+  .search-close-btn, .search-close-btn-menu {
     position: fixed;
     top: 32px;
     right: 48px;
