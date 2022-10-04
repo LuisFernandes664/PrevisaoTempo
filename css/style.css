@@ -198,11 +198,12 @@
   padding: 10px;
   border-radius: 4px;
   text-align: center;
-  margin-left: -135px;
+  margin: 0px 10px ;
 }
 
 .view-search{
   display: flex;
+  justify-content: space-between;
 }
 
 .search-container input {
@@ -215,7 +216,6 @@
     box-sizing: border-box;
     display: none;
     width: 90%;
-    margin-right: 10%;
   }
   
   .search-container input:focus {

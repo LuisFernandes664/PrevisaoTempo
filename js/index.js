@@ -55,18 +55,9 @@ openBtn.addEventListener("click", () => {
 ////////////////////////////////////////////////////////////
 
 const loader = document.querySelector('.loader-wrapper');
-
 const apikey = '0fe15371e2f5ef4035accd68fb8832ac';
-
 const form = document.getElementById('form')
 form.addEventListener('submit', getCity);
-
-function delay(n){
-    return new Promise(function(resolve){
-        setTimeout(resolve,n*1000);
-    });
-}
-
 
 let country;
 function getCity(e){
@@ -80,6 +71,12 @@ function getCity(e){
     console.log(city)
     if(!city){
         alert('Digite uma Cidade')
+        // para nao fechar o ecrã de pesquisa caso nao procure nada
+        searchContainer.classList.add("active");
+        searchCloseBtn.style.display = "block";
+        searchInput.style.display = "block";
+        btnNextOpen.style.display = "block";
+        btnOpen.style.display = "none"
     }else{
         document.getElementById('search').value = '';
         return fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`)
