@@ -1,6 +1,60 @@
-// load efect
+
+// load page
 $(window).on("load",function(){
+
+    // load efect
     $(".loader-wrapper").fadeOut("slow");
+
+    // Verificação da localização do utilizador
+
+    const successGeoCall = (position) => {
+        
+        let positionLatUser = position.coords.latitude
+        let positionLongUser = position.coords.longitude;
+
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${positionLatUser}&lon=${positionLongUser}&appid=${apikey}`)
+
+            .then(data => data.json())
+            .then(json => {
+
+                let location = document.getElementById('location');
+                location.innerHTML = (json.name + ', '+ Convertreturn(json.sys.country))
+
+                //IMG TEMP
+                document.getElementById('principal-IMG').src = `https://openweathermap.org/img/wn/${json.weather[0].icon}@4x.png`;
+
+                //CONVET TEMPERATURA PARA CELSIUS
+                let temp = KtoC(json.main.temp);
+                let tempo = document.getElementById('graus')
+                tempo.innerHTML = temp+ 'ºC'
+
+                // CAIXA INFO
+                let humidade = document.getElementById('humidade')
+                humidade.innerHTML = json.main.humidity + '%';
+                let velocidadeVento = document.getElementById('velocidade-vento')
+                velocidadeVento.innerHTML = json.wind.speed + 'km/h'
+                let nublado = document.getElementById('nublado')
+                nublado.innerHTML = json.clouds.all + '%'
+                let pressaoAtmosferica = document.getElementById('pressao-atmosferica')
+                pressaoAtmosferica.innerHTML = json.main.pressure + 'mba'
+
+                HoursPrevisao(json.coord.lat, json.coord.lon);
+
+            })
+            .catch(err => console.log('Erro: ', err))
+    } 
+    
+    const deniedGeoCall = (position) => {
+        // Activate fullscreen search
+        searchContainer.classList.add("active");
+        //searchCloseBtn.style.display = "block";
+        searchInput.style.display = "block";
+        btnNextOpen.style.display = "block";
+        btnOpen.style.display = "none"
+    }
+
+    navigator.geolocation.getCurrentPosition(successGeoCall, deniedGeoCall);
+
 });
 
 ////////// EFEITO EXPANÇÃO FULL SCREEN INPUT SEARCH ////////////////////
@@ -68,7 +122,7 @@ function getCity(e){
     $(".loader-wrapper").fadeOut(2000);
 
     let city = document.getElementById('search').value;
-    console.log(city)
+    //console.log(city)
     if(!city){
         alert('Digite uma Cidade')
         // para nao fechar o ecrã de pesquisa caso nao procure nada
@@ -121,11 +175,11 @@ function HoursPrevisao(lat, lon){
     .then(json => {
 
         FiveDayCards(json);
-        console.log(json)
+        //console.log(json)
     })
     .catch(err => console.log('Erro: ', err))
-    console.log('Lat: ',lat)
-    console.log('Lon: ',lon)
+    // console.log('Lat: ',lat)
+    // console.log('Lon: ',lon)
 }
 
 function FiveDayCards( json ){
@@ -368,3 +422,5 @@ function Convertreturn (countrySigla){
             
     }
 }
+
+
