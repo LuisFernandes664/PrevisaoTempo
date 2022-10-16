@@ -16,6 +16,10 @@
     .search-box{
         margin-left: 0px;
     }
+
+    .fa-search{
+        margin-left: 43px;
+    }
 }
 @media only screen and (max-width: 385px) and (min-width: 350px){
     .mobile-container{
@@ -38,6 +42,10 @@
     .search-box{
         margin-left: 0px;
     }
+
+    .fa-search{
+        margin-left: 43px;
+    }
 }
 
 @media only screen and (max-width: 350px) and (min-width: 300px){
@@ -45,6 +53,7 @@
         width: 100%;
         min-height: 0vh;
     }
+    
     .main{
         width: 100%;
     }
@@ -60,5 +69,9 @@
 
     .search-box{
         margin-left: 0px;
+    }   
+
+    .fa-search{
+        margin-left: 43px;
     }
 }
