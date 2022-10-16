@@ -7,6 +7,15 @@
     .main{
         width: 100%;
     }
+
+    #search{
+        padding-left: 15px;
+        margin: 0;
+    }
+
+    .search-box{
+        margin-left: 0px;
+    }
 }
 @media only screen and (max-width: 385px) and (min-width: 350px){
     .mobile-container{
@@ -21,6 +30,14 @@
         max-width: 160px;
     }
 
+    #search{
+        padding-left: 15px;
+        margin: 0;
+    }
+
+    .search-box{
+        margin-left: 0px;
+    }
 }
 
 @media only screen and (max-width: 350px) and (min-width: 300px){
@@ -34,5 +51,14 @@
     
     input[type="text"]:focus {
         max-width: 120px;
+    }
+
+    #search{
+        padding-left: 15px;
+        margin: 0;
+    }
+
+    .search-box{
+        margin-left: 0px;
     }
 }
