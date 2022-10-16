@@ -8,15 +8,17 @@ $(window).on("load",function(){
     // Verificação da localização do utilizador
 
     const successGeoCall = (position) => {
-        
-        let positionLatUser = position.coords.latitude
+
+        let positionLatUser = position.coords.latitude;
         let positionLongUser = position.coords.longitude;
 
             fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${positionLatUser}&lon=${positionLongUser}&appid=${apikey}`)
 
             .then(data => data.json())
             .then(json => {
-
+                
+                $(".loader-wrapper").fadeOut("slow")
+                
                 let location = document.getElementById('location');
                 location.innerHTML = (json.name + ', '+ Convertreturn(json.sys.country))
 
@@ -39,7 +41,7 @@ $(window).on("load",function(){
                 pressaoAtmosferica.innerHTML = json.main.pressure + 'mba'
 
                 HoursPrevisao(json.coord.lat, json.coord.lon);
-
+                $(".loader-wrapper").fadeOut("slow")
             })
             .catch(err => console.log('Erro: ', err))
     } 
@@ -51,7 +53,7 @@ $(window).on("load",function(){
         searchInput.style.display = "block";
         btnNextOpen.style.display = "block";
         btnOpen.style.display = "none"
-    }
+    }    
 
     navigator.geolocation.getCurrentPosition(successGeoCall, deniedGeoCall);
 
@@ -244,7 +246,6 @@ function FiveDayCards( json ){
         ///////////////////////////////////////////////
         
         let cards = document.createElement('div');
-       
         
         let hours = element[0].dt_txt.split(' ')[1].split(':')[0];
         let minutes = element[0].dt_txt.split(' ')[1].split(':')[1];
