@@ -54,7 +54,7 @@ $(window).on("load",function(){
         btnOpen.style.display = "none";
         loader.style.visibility = "hidden";
     }    
-    
+
     // Verificação da localização do utilizador
     navigator.geolocation.getCurrentPosition(successGeoCall, deniedGeoCall);
 
@@ -81,7 +81,8 @@ btnNextOpen.addEventListener("click", () => {
     searchCloseBtn.style.display = "none";
     searchInput.style.display = "none";
     btnNextOpen.style.display = "none";
-    btnOpen.style.display = "block"
+    btnOpen.style.display = "block";
+    loader.style.visibility = "visible";
     //searchInput.value = "";
 })
 
