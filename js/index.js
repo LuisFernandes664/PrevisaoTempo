@@ -7,6 +7,8 @@ $(window).on("load",function(){
 
     // Verificação da localização do utilizador
 
+    loader.style.display = "block";
+
     const successGeoCall = (position) => {
 
         let positionLatUser = position.coords.latitude;
@@ -16,8 +18,6 @@ $(window).on("load",function(){
 
             .then(data => data.json())
             .then(json => {
-                
-                loader.style.display = "block";
                 
                 let location = document.getElementById('location');
                 location.innerHTML = (json.name + ', '+ Convertreturn(json.sys.country))
@@ -48,11 +48,13 @@ $(window).on("load",function(){
     
     const deniedGeoCall = (position) => {
         // Activate fullscreen search
+        
         searchContainer.classList.add("active");
         //searchCloseBtn.style.display = "block";
         searchInput.style.display = "block";
         btnNextOpen.style.display = "block";
         btnOpen.style.display = "none";
+        loader.style.display = "none";
     }    
 
     navigator.geolocation.getCurrentPosition(successGeoCall, deniedGeoCall);
@@ -120,8 +122,8 @@ function getCity(e){
     //nao fazer load à pagina quando faço submit
     e.preventDefault();
     // load efect
-    loader.attributeStyleMap.delete('display')
-    $(".loader-wrapper").fadeOut(2000);
+    // loader.attributeStyleMap.delete('display')
+    // $(".loader-wrapper").fadeOut(2000);
 
     let city = document.getElementById('search').value;
     //console.log(city)
@@ -160,10 +162,10 @@ function getCity(e){
                 pressaoAtmosferica.innerHTML = json.main.pressure + 'mba'
                 HoursPrevisao(json.coord.lat, json.coord.lon);
                 console.log(json)
-                //loader.style.display = 'none';
+                loader.style.display = 'none';
             })
             .catch(err => {
-                //loader.style.display = 'none';
+                loader.style.display = 'none';
                 console.log('Erro: ', err)
             });
     }      
