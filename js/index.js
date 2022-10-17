@@ -3,11 +3,8 @@ const loader = document.querySelector('.loader-wrapper');
 $(window).on("load",function(){
 
     // load efect
-    //$(".loader-wrapper").fadeOut("slow");
 
-    // Verificação da localização do utilizador
-
-    loader.style.display = "block";
+    loader.style.visibility = "visible";
 
     const successGeoCall = (position) => {
 
@@ -41,7 +38,8 @@ $(window).on("load",function(){
                 pressaoAtmosferica.innerHTML = json.main.pressure + 'mba'
 
                 HoursPrevisao(json.coord.lat, json.coord.lon);
-                loader.style.display = "none";
+                //loader.style.display = "none";
+                loader.style.visibility = "hidden";
             })
             .catch(err => console.log('Erro: ', err))
     } 
@@ -54,9 +52,10 @@ $(window).on("load",function(){
         searchInput.style.display = "block";
         btnNextOpen.style.display = "block";
         btnOpen.style.display = "none";
-        loader.style.display = "none";
+        loader.style.visibility = "hidden";
     }    
-
+    
+    // Verificação da localização do utilizador
     navigator.geolocation.getCurrentPosition(successGeoCall, deniedGeoCall);
 
 });
@@ -121,9 +120,6 @@ let country;
 function getCity(e){
     //nao fazer load à pagina quando faço submit
     e.preventDefault();
-    // load efect
-    // loader.attributeStyleMap.delete('display')
-    // $(".loader-wrapper").fadeOut(2000);
 
     let city = document.getElementById('search').value;
     //console.log(city)
@@ -141,7 +137,7 @@ function getCity(e){
             .then(data => data.json())
             .then(json => {
 
-                loader.style.display = "block";
+                loader.style.visibility = "visible";
 
                 let location = document.getElementById('location');
                 location.innerHTML = (json.name + ', '+ Convertreturn(json.sys.country))
@@ -162,10 +158,11 @@ function getCity(e){
                 pressaoAtmosferica.innerHTML = json.main.pressure + 'mba'
                 HoursPrevisao(json.coord.lat, json.coord.lon);
                 console.log(json)
-                loader.style.display = 'none';
+
+                loader.style.visibility = "hidden";
             })
             .catch(err => {
-                loader.style.display = 'none';
+                loader.style.visibility = "hidden";
                 console.log('Erro: ', err)
             });
     }      
