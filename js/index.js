@@ -1,9 +1,9 @@
-
+const loader = document.querySelector('.loader-wrapper');
 // load page
 $(window).on("load",function(){
 
     // load efect
-    $(".loader-wrapper").fadeOut("slow");
+    //$(".loader-wrapper").fadeOut("slow");
 
     // Verificação da localização do utilizador
 
@@ -17,7 +17,7 @@ $(window).on("load",function(){
             .then(data => data.json())
             .then(json => {
                 
-                $(".loader-wrapper").fadeOut("slow")
+                loader.style.display = "block";
                 
                 let location = document.getElementById('location');
                 location.innerHTML = (json.name + ', '+ Convertreturn(json.sys.country))
@@ -41,7 +41,7 @@ $(window).on("load",function(){
                 pressaoAtmosferica.innerHTML = json.main.pressure + 'mba'
 
                 HoursPrevisao(json.coord.lat, json.coord.lon);
-                $(".loader-wrapper").fadeOut("slow")
+                loader.style.display = "none";
             })
             .catch(err => console.log('Erro: ', err))
     } 
@@ -52,7 +52,7 @@ $(window).on("load",function(){
         //searchCloseBtn.style.display = "block";
         searchInput.style.display = "block";
         btnNextOpen.style.display = "block";
-        btnOpen.style.display = "none"
+        btnOpen.style.display = "none";
     }    
 
     navigator.geolocation.getCurrentPosition(successGeoCall, deniedGeoCall);
@@ -110,7 +110,7 @@ openBtn.addEventListener("click", () => {
 
 ////////////////////////////////////////////////////////////
 
-const loader = document.querySelector('.loader-wrapper');
+
 const apikey = '0fe15371e2f5ef4035accd68fb8832ac';
 const form = document.getElementById('form')
 form.addEventListener('submit', getCity);
@@ -138,6 +138,9 @@ function getCity(e){
         return fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`)
             .then(data => data.json())
             .then(json => {
+
+                loader.style.display = "block";
+
                 let location = document.getElementById('location');
                 location.innerHTML = (json.name + ', '+ Convertreturn(json.sys.country))
                 //IMG TEMP
