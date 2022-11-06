@@ -50,6 +50,7 @@ $(window).on("load",function(){
         searchContainer.classList.add("active");
         //searchCloseBtn.style.display = "block";
         searchInput.style.display = "block";
+        searchInput.focus();
         btnNextOpen.style.display = "block";
         btnOpen.style.display = "none";
         loader.style.visibility = "hidden";
@@ -73,13 +74,15 @@ btnOpen.addEventListener("click", () => {
   searchCloseBtn.style.display = "block";
   searchInput.style.display = "block";
   btnNextOpen.style.display = "block";
-  btnOpen.style.display = "none"
+  btnOpen.style.display = "none";
+  searchInput.focus();
 });
 
 btnNextOpen.addEventListener("click", () => {
     searchContainer.classList.remove("active");
     searchCloseBtn.style.display = "none";
     searchInput.style.display = "none";
+    searchInput.blur();
     btnNextOpen.style.display = "none";
     btnOpen.style.display = "block";
     loader.style.visibility = "visible";
@@ -90,6 +93,7 @@ searchCloseBtn.addEventListener("click", () => {
   searchContainer.classList.remove("active");
   searchCloseBtn.style.display = "none";
   searchInput.style.display = "none";
+  searchInput.blur();
   btnNextOpen.style.display = "none";
   btnOpen.style.display = "block"
   //searchInput.value = "";
@@ -130,6 +134,7 @@ function getCity(e){
         searchContainer.classList.add("active");
         searchCloseBtn.style.display = "block";
         searchInput.style.display = "block";
+        searchInput.focus();
         btnNextOpen.style.display = "block";
         btnOpen.style.display = "none"
     }else{
@@ -161,6 +166,7 @@ function getCity(e){
                 console.log(json)
 
                 loader.style.visibility = "hidden";
+                searchInput.blur();
             })
             .catch(err => {
                 loader.style.visibility = "hidden";
@@ -217,11 +223,12 @@ function FiveDayCards( json ){
     for(i=0; i<json.cnt; i++) {
 
         //COMPARAR À DATA ATUAL
-        let today = new Date().toLocaleDateString('fr-CA', {timeZone: 'UTC'}) //
+        let today = new Date().toString('yyyy-mm-dd') // new Date().toLocaleDateString('fr-CA', {timeZone: 'UTC'}) //
         let aux = json.list[i].dt_txt
+        console.log(aux)
         //let getHours = aux.split(' ')[1];
         //VERIFICAR EM CADA OBJETO SE A DATA É IGUAL AO DIA DE HOJE
-        if ( aux.includes(today) || i <= 6 ) {
+        if ( aux.includes(today) || i <= 9 ) {
             newArrayToday.push([json.list[i]])
         }
     }
@@ -276,6 +283,7 @@ function avg(num1, num2){
     console.log('NMum2: ',num2)
     console.log('Media: ',KtoC((Number(num1)+Number(num2))/2))
     */
+
     return KtoC((Number(num1)+Number(num2))/2);
 }
 
