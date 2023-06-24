@@ -11,6 +11,10 @@
   --input: #ffffff;
 }
 
+body {
+  background-color: #e4eaf8;
+}
+
 /* LOADER =============================*/
 .loader-wrapper {
     display: flex;
@@ -281,6 +285,8 @@
     align-items: center;
     min-height: 100vh;
 }
+
+
 .main {
     width: 500px;
     background-color: #e4eaf8;
@@ -491,6 +497,7 @@
   flex-wrap: nowrap;
   margin-top: 20px;
   overflow-x: auto;
+  cursor: grab;
 }
 
 .section-cards {
